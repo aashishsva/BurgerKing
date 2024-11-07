@@ -12,51 +12,43 @@ let drinkImg = document.getElementById("drink-img");
 // Order ID container
 let orderIdDisplay = document.getElementById("order-id");
 
-// Function to generate a unique order ID (random number between 0 and 1000)
+// Sound effects
+let clickSound = new Audio("click.mp3");
+let successSound = new Audio("success.mp3");
+
 function generateOrderId() {
     return Math.floor(Math.random() * 1001); 
 }
 
-// Function to hide all item images
 function hideAllImages() {
-    burgerImg.style.display = "none";
-    friesImg.style.display = "none";
-    drinkImg.style.display = "none";
+    burgerImg.classList.remove("show");
+    friesImg.classList.remove("show");
+    drinkImg.classList.remove("show");
 }
 
 let newOrderBtn = document.getElementById("new-order-btn");
 
-// Function to reset the order form
 function resetOrder() {
-    // Uncheck all checkboxes
     burger.checked = false;
     fries.checked = false;
     drink.checked = false;
-
-    // Hide all images
     hideAllImages();
-
-    // Clear the order details and order ID display
     orderItem.innerHTML = "";
     orderIdDisplay.style.display = "none";
 }
 
-// Event listener for the new order button
 newOrderBtn.addEventListener("click", function() {
-    resetOrder(); // Reset the order form when "New Order" is clicked
+    resetOrder();
+    clickSound.play();
 });
-
 
 orderBtn.addEventListener("click", function(e) {
     e.preventDefault();
-
-    // Hide previous order images
     hideAllImages();
 
     let items = [];
     let orderedImages = [];
 
-    // Check selected items and add them to the order array
     if (burger.checked) {
         items.push(burger.value);
         orderedImages.push(burgerImg);
@@ -71,19 +63,22 @@ orderBtn.addEventListener("click", function(e) {
     }
 
     if (items.length > 0) {
-        // Generate a unique order ID for this order
         let orderId = generateOrderId();
-        
         orderIdDisplay.innerHTML = `Order ID: ${orderId}`;
-        orderIdDisplay.style.display = "block"; 
+        orderIdDisplay.style.display = "block";
+        clickSound.play();
+        
 
         orderedImages.forEach((img, index) => {
             setTimeout(() => {
+                img.classList.add("show");
                 orderItem.innerHTML = `<p>You ordered: ${items.join(", ")}</p>`;
-                img.style.display = "block";
-            }, 1000 * (index + 1));  
+                successSound.play();
+            }, 500 * (index + 1));
+            
         });
     } else {
         orderItem.innerHTML = `<p>Please select at least one item.</p>`;
+        clickSound.play();
     }
 });

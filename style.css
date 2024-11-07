@@ -99,6 +99,19 @@ p{
     font-weight: bold;
 }
 
+
+#new-order-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
 /* Existing styles above... */
 
 @media (max-width: 1024px) {

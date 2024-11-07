@@ -24,6 +24,29 @@ function hideAllImages() {
     drinkImg.style.display = "none";
 }
 
+let newOrderBtn = document.getElementById("new-order-btn");
+
+// Function to reset the order form
+function resetOrder() {
+    // Uncheck all checkboxes
+    burger.checked = false;
+    fries.checked = false;
+    drink.checked = false;
+
+    // Hide all images
+    hideAllImages();
+
+    // Clear the order details and order ID display
+    orderItem.innerHTML = "";
+    orderIdDisplay.style.display = "none";
+}
+
+// Event listener for the new order button
+newOrderBtn.addEventListener("click", function() {
+    resetOrder(); // Reset the order form when "New Order" is clicked
+});
+
+
 orderBtn.addEventListener("click", function(e) {
     e.preventDefault();
 

@@ -98,3 +98,48 @@ p{
     color: #383636;
     font-weight: bold;
 }
+
+/* Existing styles above... */
+
+@media (max-width: 1024px) {
+    .container {
+        min-width: 90%; /* Increase width for smaller screens */
+        min-height: auto; /* Allow height to adjust */
+        padding: 10px;
+    }
+
+    .input-container {
+        width: 80%; /* Make input container narrower */
+        height: auto; /* Let height adjust based on content */
+    }
+
+    button {
+        font-size: 16px; /* Slightly smaller font for the button */
+    }
+
+    .imgs img {
+        width: 150px; /* Reduce image size for smaller screens */
+        height: 150px;
+    }
+
+    .order-id {
+        font-size: 16px; /* Adjust font size of order ID */
+    }
+
+    h1 {
+        font-size: 24px; /* Reduce header size */
+    }
+
+    p {
+        font-size: 16px; /* Adjust paragraph font size */
+    }
+}
+
+@media (max-width: 320px) {
+    .all-input{
+        width: 100%; /* Full width for smaller screens */
+        height: auto; /* Let height adjust based on content */
+        flex-direction: column;
+        gap: 0;
+    }
+}

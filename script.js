@@ -17,8 +17,18 @@ function generateOrderId() {
     return Math.floor(Math.random() * 1001); 
 }
 
+// Function to hide all item images
+function hideAllImages() {
+    burgerImg.style.display = "none";
+    friesImg.style.display = "none";
+    drinkImg.style.display = "none";
+}
+
 orderBtn.addEventListener("click", function(e) {
     e.preventDefault();
+
+    // Hide previous order images
+    hideAllImages();
 
     let items = [];
     let orderedImages = [];
